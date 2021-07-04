@@ -40,4 +40,18 @@ public class SaveAndLoad
         reader.Close();
         return float.Parse(value);
     }
+
+    public string jetMultipleValue(int index)
+    {
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Multiple.txt");
+        return value[index];
+    }
+
+    public void upgradeMultipleValue(int index)
+    {
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Multiple.txt");
+        float currentValue = float.Parse(value[index]);
+        value[index] = (currentValue + 0.25).ToString();
+        File.WriteAllLines("Data/Jet/Multiple.txt", value);
+    }
 }

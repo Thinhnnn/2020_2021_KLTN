@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;    //textMeshPro
 
 public class MenuUIEvent : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class MenuUIEvent : MonoBehaviour
     //public Animator Jet4Animator;
 
     public GameObject[] jetList;
+    public TextMeshProUGUI[] multipleTextMesh;
     public int jetIndex = 0;
 
     #region base method
@@ -38,6 +40,8 @@ public class MenuUIEvent : MonoBehaviour
         HideAllJet();
         ShowJetWithIndex(0);
         //jetList = GameObject.FindGameObjectsWithTag("SelectJet");
+
+        loadJetMultipleValue();
     }
 
     // Update is called once per frame
@@ -181,12 +185,29 @@ public class MenuUIEvent : MonoBehaviour
     }
     #endregion
 
+    #region save and load value
+    public void loadJetMultipleValue()
+    {
+        for (int i = 0; i < multipleTextMesh.Length; i++)
+        {
+            multipleTextMesh[i].text = a.jetMultipleValue(i) + "x";
+        }
+    }
+
+    public void upgradeJetMultipleValue(int index)
+    {
+        a.upgradeMultipleValue(index);
+        loadJetMultipleValue();
+    }
+    #endregion
+
     #region jet Event
 
     public void ShowJetWithIndex(int index)
     {
         HideAllJet();
         jetList[index].SetActive(true);
+        jetIndex = index;
         //switch (jetIndex)
         //{
         //    case 0: { multipleValue.text = "Power x " + a.myPower("jet1.txt").ToString(); break; }

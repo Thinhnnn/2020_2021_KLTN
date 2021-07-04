@@ -17,6 +17,7 @@ TagManager:
   - Ally
   - AllyMissle
   - EnemyMissle
+  - MultiplePoint
   layers:
   - Default
   - TransparentFX
