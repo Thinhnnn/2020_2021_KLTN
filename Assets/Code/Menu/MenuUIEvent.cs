@@ -27,7 +27,7 @@ public class MenuUIEvent : MonoBehaviour
     public Text multipleValue;
     //public Animator Jet4Animator;
 
-    public GameObject[] jetList;
+    public GameObject[] jetList, unlockBtn, lockBtn;
     public TextMeshProUGUI[] multipleTextMesh;
     public int jetIndex = 0;
 
@@ -42,6 +42,7 @@ public class MenuUIEvent : MonoBehaviour
         //jetList = GameObject.FindGameObjectsWithTag("SelectJet");
 
         loadJetMultipleValue();
+        loadJetUnlockStatus();
     }
 
     // Update is called once per frame
@@ -186,6 +187,27 @@ public class MenuUIEvent : MonoBehaviour
     #endregion
 
     #region save and load value
+
+    public void loadJetUnlockStatus()
+    {
+
+        for(int i = 0; i < jetList.Length; i++)
+        {
+            if (i < a.unlockLevel())
+            {
+                unlockBtn[i].SetActive(true);
+                unlockBtn[i + jetList.Length].SetActive(true);
+                lockBtn[i].SetActive(false);
+            }
+            else
+            {
+                unlockBtn[i].SetActive(false);
+                unlockBtn[i + jetList.Length].SetActive(false);
+                lockBtn[i].SetActive(true);
+            }
+        }
+    }
+
     public void loadJetMultipleValue()
     {
         for (int i = 0; i < multipleTextMesh.Length; i++)

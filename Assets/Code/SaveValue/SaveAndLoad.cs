@@ -54,4 +54,10 @@ public class SaveAndLoad
         value[index] = (currentValue + 0.25).ToString();
         File.WriteAllLines("Data/Jet/Multiple.txt", value);
     }
+
+    public int unlockLevel()
+    {
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Level.txt");
+        return int.Parse(value[0]);
+    }
 }

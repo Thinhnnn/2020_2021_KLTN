@@ -812,7 +812,7 @@ GameObject:
   - component: {fileID: 8362717350738562239}
   m_Layer: 0
   m_Name: SelectBtn
-  m_TagString: Untagged
+  m_TagString: JetUnlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2549,7 +2549,7 @@ GameObject:
   - component: {fileID: 7889107166322398523}
   m_Layer: 0
   m_Name: Locked
-  m_TagString: Untagged
+  m_TagString: JetLock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2894,7 +2894,7 @@ GameObject:
   - component: {fileID: 7889107166391441686}
   m_Layer: 0
   m_Name: MultiplePart
-  m_TagString: Untagged
+  m_TagString: JetUnlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

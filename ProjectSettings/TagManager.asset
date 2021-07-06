@@ -18,6 +18,8 @@ TagManager:
   - AllyMissle
   - EnemyMissle
   - MultiplePoint
+  - JetLock
+  - JetUnlock
   layers:
   - Default
   - TransparentFX
