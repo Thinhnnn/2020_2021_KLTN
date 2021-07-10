@@ -28,7 +28,8 @@ public class HpManager : MonoBehaviour
     {
         if ((gameObject.tag == "Enemy" && other.tag == "Bullet") || (gameObject.tag == "Ally" && other.tag == "EnemyBullet"))
         {
-            currentHP -= 100f;
+            //currentHP -= 100f;
+            currentHP -= 1f;
             UpdateHP();
         }
     }

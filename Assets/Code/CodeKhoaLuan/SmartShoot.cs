@@ -17,6 +17,9 @@ public class SmartShoot : MonoBehaviour
     public float fireRate = .2f;
     public float reloadTime = 1f;
     public bool reloading;
+
+    public GameObject[] gun;
+    public int bulletPerOneShoot = 1;
     #endregion
 
     // Start is called before the first frame update
@@ -50,14 +53,82 @@ public class SmartShoot : MonoBehaviour
     IEnumerator normalShoot()
     {
         reloading = true;
-        for(int i = 0; i < ammount; i++)
+        switch (bulletPerOneShoot)
         {
-            //tạo ra âm thanh bắn
-            //var x = FindObjectOfType<AudioManager>();
-            audioManager.PlaySound("Shoot");
-            Instantiate(bullet, aimVector.transform.position, aimVector.transform.rotation); 
-            yield return new WaitForSeconds(fireRate);
+            case 1: //mode bắn lần lượt từng viên
+                {
+                    for (int i = 0; i < ammount; i++)
+                    {
+                        //tạo ra âm thanh bắn
+                        //var x = FindObjectOfType<AudioManager>();
+                        audioManager.PlaySound("Shoot");
+                        Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
+                        yield return new WaitForSeconds(fireRate);
+                    }
+                    break;
+                }
+            case 2: //mode bắn 2 viên cùng lúc
+                {
+                    for (int i = 0; i < ammount; i+=2)
+                    {
+                        //tạo ra âm thanh bắn
+                        //var x = FindObjectOfType<AudioManager>();
+                        audioManager.PlaySound("Shoot");
+                        Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
+                        Instantiate(bullet, gun[1].transform.position, gun[1].transform.rotation);
+                        yield return new WaitForSeconds(fireRate);
+                    }
+                    break; 
+                }
+            case 3: //mode bắn 3 viên cùng lúc
+                {
+                    for (int i = 0; i < ammount; i += 3)
+                    {
+                        //tạo ra âm thanh bắn
+                        //var x = FindObjectOfType<AudioManager>();
+                        audioManager.PlaySound("Shoot");
+                        Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
+                        Instantiate(bullet, gun[1].transform.position, gun[1].transform.rotation);
+                        Instantiate(bullet, gun[2].transform.position, gun[2].transform.rotation);
+                        yield return new WaitForSeconds(fireRate);
+                    }
+                    break; 
+                }
+            case 4: //mode bắn 2 lần 2 viên
+                {
+                    for (int i = 0; i < ammount; i += 4)
+                    {
+                        //tạo ra âm thanh bắn
+                        //var x = FindObjectOfType<AudioManager>();
+                        audioManager.PlaySound("Shoot");
+                        Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
+                        Instantiate(bullet, gun[1].transform.position, gun[1].transform.rotation);
+                        yield return new WaitForSeconds(fireRate);
+                        audioManager.PlaySound("Shoot");
+                        Instantiate(bullet, gun[2].transform.position, gun[2].transform.rotation);
+                        Instantiate(bullet, gun[3].transform.position, gun[3].transform.rotation);
+                        yield return new WaitForSeconds(fireRate);
+                    }
+                    break; 
+                }
+            case 5: //mode bắn 5 viên cùng lúc
+                {
+                    for (int i = 0; i < ammount; i += 4)
+                    {
+                        //tạo ra âm thanh bắn
+                        //var x = FindObjectOfType<AudioManager>();
+                        audioManager.PlaySound("Shoot");
+                        Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
+                        Instantiate(bullet, gun[1].transform.position, gun[1].transform.rotation);
+                        Instantiate(bullet, gun[2].transform.position, gun[2].transform.rotation);
+                        Instantiate(bullet, gun[3].transform.position, gun[3].transform.rotation);
+                        Instantiate(bullet, gun[4].transform.position, gun[4].transform.rotation);
+                        yield return new WaitForSeconds(fireRate);
+                    }
+                    break; 
+                }
         }
+        
         yield return new WaitForSeconds(reloadTime);
         reloading = false;
     }
