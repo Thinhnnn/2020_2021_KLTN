@@ -94,19 +94,19 @@ public class SmartShoot : MonoBehaviour
                     }
                     break; 
                 }
-            case 4: //mode bắn 2 lần 2 viên
+            case 4: //mode bắn nhiều lần 2 viên
                 {
                     for (int i = 0; i < ammount; i += 4)
                     {
                         //tạo ra âm thanh bắn
                         //var x = FindObjectOfType<AudioManager>();
                         audioManager.PlaySound("Shoot");
-                        Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
-                        Instantiate(bullet, gun[1].transform.position, gun[1].transform.rotation);
+                        Instantiate(bullet, gun[i + 0].transform.position, gun[i + 0].transform.rotation);
+                        Instantiate(bullet, gun[i + 1].transform.position, gun[i + 1].transform.rotation);
                         yield return new WaitForSeconds(fireRate);
                         audioManager.PlaySound("Shoot");
-                        Instantiate(bullet, gun[2].transform.position, gun[2].transform.rotation);
-                        Instantiate(bullet, gun[3].transform.position, gun[3].transform.rotation);
+                        Instantiate(bullet, gun[i + 2].transform.position, gun[i + 2].transform.rotation);
+                        Instantiate(bullet, gun[i + 3].transform.position, gun[i + 3].transform.rotation);
                         yield return new WaitForSeconds(fireRate);
                     }
                     break; 

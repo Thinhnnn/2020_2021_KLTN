@@ -101,8 +101,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.9233866, b: 1, a: 0.39215687}
-      key1: {r: 0, g: 0.6677432, b: 1, a: 0.39215687}
+      key0: {r: 1, g: 0.1017451, b: 0, a: 0.39215687}
+      key1: {r: 1, g: 0.16159368, b: 0, a: 0.39215687}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 1218730405892678591}
   - component: {fileID: 5636860876037386458}
   m_Layer: 0
-  m_Name: Meteor
+  m_Name: EnemyMeteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,8 +285,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.9233866, b: 1, a: 0.39215687}
-      key1: {r: 0, g: 0.6677432, b: 1, a: 0.39215687}
+      key0: {r: 1, g: 0.1017451, b: 0, a: 0.39215687}
+      key1: {r: 1, g: 0.16159368, b: 0, a: 0.39215687}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -422,8 +422,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.9233866, b: 1, a: 0.39215687}
-      key1: {r: 0, g: 0.6677432, b: 1, a: 0.39215687}
+      key0: {r: 1, g: 0.1017451, b: 0, a: 0.39215687}
+      key1: {r: 1, g: 0.16159368, b: 0, a: 0.39215687}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
