@@ -44,6 +44,12 @@ public class HpManager : MonoBehaviour
         }
     }
 
+    public void takeLaserDamage(float value)
+    {
+        currentHP -= value;
+        UpdateHP();
+    }
+
     #region tìm camera - vì sẽ có nhiều camera trong 1 scene, nên cần tìm đúng camera để look at
     void getCamera()
     {

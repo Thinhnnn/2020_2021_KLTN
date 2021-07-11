@@ -16,6 +16,8 @@ public class SmartLaser : MonoBehaviour
     public GameObject nearestRival;
     public float refreshTime = 1f;
 
+    public float damage = 100f;
+
     public bool canBeam = false;
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,7 @@ public class SmartLaser : MonoBehaviour
                 {
                     GameObject beam = Instantiate(laser) as GameObject;
                     beam.GetComponent<LaserSelfDestruct>().getObject(gun[i], nearestRival);
+                    nearestRival.GetComponent<HpManager>().takeLaserDamage(damage);
                 }
             }
             else if (mode == 2)
@@ -73,6 +76,7 @@ public class SmartLaser : MonoBehaviour
                 {
                     GameObject beam = Instantiate(laser) as GameObject;
                     beam.GetComponent<LaserSelfDestruct>().getObject(gun[i], nearestRival);
+                    nearestRival.GetComponent<HpManager>().takeLaserDamage(damage);
                     yield return new WaitForSeconds(fireRate);
                 }
             }
