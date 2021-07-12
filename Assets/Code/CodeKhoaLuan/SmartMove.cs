@@ -8,6 +8,7 @@ public class SmartMove : MonoBehaviour
     // Start is called before the first frame update
     public float fightRange = 500f;//tầm giao tranh
     public GameObject target;
+    //GameObject target;
     public GameObject aimVector;
     public GameObject rightVector;
     public GameObject rightDodge;
@@ -20,13 +21,23 @@ public class SmartMove : MonoBehaviour
     public SpaceshipManager spaceshipManager;
     public AudioManager audioManager;
     public float refreshTargetTime = 5f;
+
+    public bool isPlayer = false;
     #endregion
 
     void Start()
     {
         spaceshipManager = FindObjectOfType<SpaceshipManager>();
         audioManager = FindObjectOfType<AudioManager>();
-        target = spaceshipManager.nearestRival(gameObject);
+        if(spaceshipManager.nearestRival(gameObject) != null)
+        {
+            Debug.Log(spaceshipManager.nearestRival(gameObject).tag);
+            target = spaceshipManager.nearestRival(gameObject);
+        }
+        else
+        {
+            target = this.gameObject;
+        }
         StartCoroutine(CheckTarget());
         isDodging = false;
     }
@@ -36,19 +47,22 @@ public class SmartMove : MonoBehaviour
     {
 
         //hướng về kẻ địch
-        aimVector.transform.LookAt(target.transform);  
+        //Debug.Log(target.tag);
+        aimVector.transform.LookAt(target.transform);
 
-        //tính toán di chuyển
-        float distance = Vector3.Distance(transform.position, target.transform.position);
-        if (distance > fightRange)
+        if (!isPlayer)
         {
-            FlyMode_Find();
+            //tính toán di chuyển
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+            if (distance > fightRange)
+            {
+                FlyMode_Find();
+            }
+            else
+            {
+                FlyMode_Fight();
+            }
         }
-        else
-        {
-            FlyMode_Fight();
-        }
- 
     }
 
     #region Fly mode
@@ -105,7 +119,7 @@ public class SmartMove : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //nếu sắp va phải vật gì đó, và đang KHÔNG trong trạng thái né
-        if ((other.tag == "Ally" || other.tag == "Enemy" || other.tag == "Environment"))
+        if (!isDodging && (other.tag == "Ally" || other.tag == "Enemy" || other.tag == "Environment"))
         {
             //Debug.Log(gameObject.name + " hit " + other.name);
             if(Vector3.Distance(other.transform.position, rightDodge.transform.position) > Vector3.Distance(other.transform.position, leftDodge.transform.position))

@@ -70,4 +70,25 @@ public class SaveAndLoad
         value[0] = (currentValue -1000).ToString();
         File.WriteAllLines("Data/Jet/Gold.txt", value);
     }
+
+    public void addGold(int amount)
+    {
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Gold.txt");
+        float currentValue = float.Parse(value[0]);
+        value[0] = (currentValue + amount).ToString();
+        File.WriteAllLines("Data/Jet/Gold.txt", value);
+    }
+
+    public int selectedShip()
+    {
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Selected.txt");
+        return int.Parse(value[0]);
+    }
+
+    public void setSelectedShip(int index)
+    {
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Selected.txt");
+        value[0] = index.ToString();
+        File.WriteAllLines("Data/Jet/Selected.txt", value);
+    }
 }

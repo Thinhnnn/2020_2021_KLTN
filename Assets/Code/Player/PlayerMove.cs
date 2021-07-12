@@ -11,30 +11,73 @@ public class PlayerMove : MonoBehaviour
     public float turnSpeed = 1f;    //tốc độ rẽ hướng trái/phải
     public float curveSpeed = 1f;   //tốc độ lượn lên, xuống
 
-    public GameObject[] engines;       //biến lưu động cơ tên lửa, sẽ bật lên khi di chuyển
-    public GameObject[] subEngines;
+    public GameObject[] shipList;
+
+    //public GameObject[] engines;       //biến lưu động cơ tên lửa, sẽ bật lên khi di chuyển
+    //public GameObject[] subEngines;
 
     float x;    //biến lấy thông tin trục x
     float z;    //biến lấy thông tin trục z
 
-    public float speedUpTime = 5f;
-    public float speedUpValue = 50f;
-    public bool isSpeedUp = false;
-    public float speedUpCooldown = 20f;
-    public bool SpeedUpIsCooldown = false;
+    //public float speedUpTime = 5f;
+    //public float speedUpValue = 50f;
+    //public bool isSpeedUp = false;
+    //public float speedUpCooldown = 20f;
+    //public bool SpeedUpIsCooldown = false;
 
     public bool isFly = false;
+
+    GameObject ship;
+
+    private void Awake()
+    {
+        SaveAndLoad s = new SaveAndLoad();
+        int shipIndex = s.selectedShip();
+        ship = Instantiate(shipList[shipIndex]) as GameObject;
+        ship.transform.SetParent(this.transform);
+        ship.transform.position = transform.position;
+        //Instantiate(shipList[shipIndex], transform.position, transform.rotation);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach(GameObject engine in engines)
+        //foreach(GameObject engine in engines)
+        //{
+        //    engine.SetActive(false);
+        //}
+        //foreach (GameObject Sengine in subEngines)
+        //{
+        //    Sengine.SetActive(false);
+        //}
+        ship = GetChildObject(transform, "Ally");
+        if (ship != null)
         {
-            engine.SetActive(false);
+            speed = ship.GetComponent<SmartMove>().flySpeed;
         }
-        foreach (GameObject Sengine in subEngines)
+    }
+
+    public GameObject GetChildObject(Transform parent, string _tag)
+    {
+        GameObject result = new GameObject();
+        bool found = false;
+        for (int i = 0; i < parent.childCount; i++)
         {
-            Sengine.SetActive(false);
+            Transform child = parent.GetChild(i);
+            if (child.tag == _tag)
+            {
+                result = child.gameObject;
+                found = true;
+                break;
+            }
+        }
+        if (found)
+        {
+            return result;
+        }
+        else
+        {
+            return null;
         }
     }
 
@@ -64,64 +107,64 @@ public class PlayerMove : MonoBehaviour
         controller.Move(transform.forward * z * speed * Time.deltaTime);    //di chuyển theo tín hiệu từ bàn phím
 
         //code lượn lên/xuống khi nhấn các nút Q,E
-        if (Input.GetKey(KeyCode.Q))
-        {
-            transform.Rotate(-curveSpeed * Time.deltaTime, 0f, 0f);
-        }
-        else if (Input.GetKey(KeyCode.E))
-        {
-            transform.Rotate(curveSpeed * Time.deltaTime, 0f, 0f);
-        }
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    transform.Rotate(-curveSpeed * Time.deltaTime, 0f, 0f);
+        //}
+        //else if (Input.GetKey(KeyCode.E))
+        //{
+        //    transform.Rotate(curveSpeed * Time.deltaTime, 0f, 0f);
+        //}
 
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            sfx.PlaySound("SpeedUp");
-            SpeedUp();
-        }
+        //if (Input.GetKey(KeyCode.Alpha1))
+        //{
+        //    sfx.PlaySound("SpeedUp");
+        //    SpeedUp();
+        //}
 
-        if (z > 0)
-        {
-            //nếu đang có bay về phía trước, bật động cơ lên
-            foreach (GameObject engine in engines)
-            {
-                engine.SetActive(true);
-            }
-        }
-        else
-        {
-            //ngược lại, tắt động cơ đi
-            foreach (GameObject engine in engines)
-            {
-                engine.SetActive(false);
-            }
-        }
+        //if (z > 0)
+        //{
+        //    //nếu đang có bay về phía trước, bật động cơ lên
+        //    foreach (GameObject engine in engines)
+        //    {
+        //        engine.SetActive(true);
+        //    }
+        //}
+        //else
+        //{
+        //    //ngược lại, tắt động cơ đi
+        //    foreach (GameObject engine in engines)
+        //    {
+        //        engine.SetActive(false);
+        //    }
+        //}
     }
 
-    void SpeedUp()
-    {
-        if (!isSpeedUp && !SpeedUpIsCooldown)
-        {
-            isSpeedUp = true;
-            SpeedUpIsCooldown = true;
-            speed += speedUpValue;
-            StartCoroutine(AnimateSpeedUp());
-        }
-    }
+    //void SpeedUp()
+    //{
+    //    if (!isSpeedUp && !SpeedUpIsCooldown)
+    //    {
+    //        isSpeedUp = true;
+    //        SpeedUpIsCooldown = true;
+    //        speed += speedUpValue;
+    //        StartCoroutine(AnimateSpeedUp());
+    //    }
+    //}
 
-    IEnumerator AnimateSpeedUp()
-    {
-        foreach (GameObject Sengine in subEngines)
-        {
-            Sengine.SetActive(true);
-        }
-        yield return new WaitForSeconds(speedUpTime);
-        isSpeedUp = false;
-        foreach (GameObject Sengine in subEngines)
-        {
-            Sengine.SetActive(false);
-        }
-        speed -= speedUpValue;
-        yield return new WaitForSeconds(speedUpCooldown - speedUpTime);
-        SpeedUpIsCooldown = false;
-    }
+    //IEnumerator AnimateSpeedUp()
+    //{
+    //    foreach (GameObject Sengine in subEngines)
+    //    {
+    //        Sengine.SetActive(true);
+    //    }
+    //    yield return new WaitForSeconds(speedUpTime);
+    //    isSpeedUp = false;
+    //    foreach (GameObject Sengine in subEngines)
+    //    {
+    //        Sengine.SetActive(false);
+    //    }
+    //    speed -= speedUpValue;
+    //    yield return new WaitForSeconds(speedUpCooldown - speedUpTime);
+    //    SpeedUpIsCooldown = false;
+    //}
 }

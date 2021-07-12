@@ -775,7 +775,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1495,7 +1495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6008179437794104625
 Transform:
   m_ObjectHideFlags: 0
@@ -2041,7 +2041,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2335,7 +2335,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6008179438749689173}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4771d68de1980943b596e63819fb40a, type: 3}
   m_Name: 
@@ -2354,6 +2354,7 @@ MonoBehaviour:
   spaceshipManager: {fileID: 0}
   audioManager: {fileID: 0}
   refreshTargetTime: 1
+  isPlayer: 1
 --- !u!135 &6008179438749689168
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2484,7 +2485,7 @@ MonoBehaviour:
   - {fileID: 6008179437495420191}
   - {fileID: 6008179437512009880}
   reloadTime: 5
-  meteor: {fileID: 1218730405892678590, guid: 76a8ac1132e28c546b0cb1e00056a9f9, type: 3}
+  meteor: {fileID: 8129414756732337943, guid: 76a8ac1132e28c546b0cb1e00056a9f9, type: 3}
   mode: 1
   fireRate: 2
   isPlayer: 1
@@ -2728,7 +2729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6008179438889792521
 Transform:
   m_ObjectHideFlags: 0

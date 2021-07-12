@@ -25,4 +25,13 @@ public class MeteorSpin : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Environment" || (gameObject.tag == "AllyMeteor" && other.tag == "Enemy") || (gameObject.tag == "EnemyMeteor" && other.tag == "Ally"))
+        {
+            Destroy(gameObject);
+            //Instantiate(explode, transform.position, transform.rotation);
+        }
+    }
 }

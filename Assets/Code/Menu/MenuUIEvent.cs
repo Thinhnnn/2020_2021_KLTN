@@ -40,7 +40,7 @@ public class MenuUIEvent : MonoBehaviour
         myMoney.text = a.MyMoney().ToString();
         multipleValue.text = "Power x " + a.myPower("jet1.txt").ToString();
         HideAllJet();
-        ShowJetWithIndex(0);
+        ShowJetWithIndex(a.selectedShip());
         //jetList = GameObject.FindGameObjectsWithTag("SelectJet");
 
         loadJetMultipleValue();
@@ -239,6 +239,7 @@ public class MenuUIEvent : MonoBehaviour
         HideAllJet();
         jetList[index].SetActive(true);
         jetIndex = index;
+        a.setSelectedShip(index);
         //switch (jetIndex)
         //{
         //    case 0: { multipleValue.text = "Power x " + a.myPower("jet1.txt").ToString(); break; }

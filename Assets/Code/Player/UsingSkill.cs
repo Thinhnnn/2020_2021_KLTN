@@ -5,113 +5,157 @@ using UnityEngine.UI;
 
 public class UsingSkill : MonoBehaviour
 {
-    [Header("Skill 1")]
-    public Image skill_1;
-    public float cooldown_1 = 5f;
-    bool isCooldown_1 = false;
+    [Header("NormalShoot")]
+    public Image normalShoot;
+    public float cooldownNormal = 5f;
+    bool isCooldownNormal = false;
 
-    [Header("Skill 2")]
-    public Image skill_2;
-    public float cooldown_2 = 5f;
-    bool isCooldown_2 = false;
+    [Header("Missle")]
+    public Image missle;
+    public float cooldownMissle = 5f;
+    bool isCooldownMissle = false;
 
-    [Header("Skill 3")]
-    public Image skill_3;
-    public float cooldown_3 = 5f;
-    bool isCooldown_3 = false;
+    [Header("Meteor")]
+    public Image meteor;
+    public float cooldownMeteor = 5f;
+    bool isCooldownMeteor = false;
 
-    [Header("Dash")]
-    public Image dash_img;
-    public float cooldown_dash = 5f;
-    bool isCooldown_dash = false;
+    [Header("Laser")]
+    public Image laser;
+    public float cooldownLaser = 5f;
+    bool isCooldownLaser = false;
+
+    public GameObject player;
+    GameObject ship;
 
     // Start is called before the first frame update
     void Start()
     {
-        skill_1.fillAmount = 0;
+        //skill_1.fillAmount = 0;
+        ship = GetChildObject(player.transform, "Ally");
+        if (ship != null)
+        {
+            cooldownNormal = ship.GetComponent<SmartShoot>().reloadTime;
+            if (ship.GetComponent<SmartMissleRelease>().amount != 0)
+            {
+                cooldownMissle = ship.GetComponent<SmartMissleRelease>().reloadTime;
+            }
+            if (ship.GetComponent<SmartMeteorRelease>().amount != 0)
+            {
+                cooldownMeteor = ship.GetComponent<SmartMeteorRelease>().reloadTime;
+            }
+            if (ship.GetComponent<SmartMissleRelease>().amount != 0)
+            {
+                cooldownLaser = ship.GetComponent<SmartLaser>().reloadTime;
+            }
+        }
+    }
+
+    public GameObject GetChildObject(Transform parent, string _tag)
+    {
+        GameObject result = new GameObject();
+        bool found = false;
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+            if (child.tag == _tag)
+            {
+                result =  child.gameObject;
+                found = true;
+                break;
+            }
+        }
+        if (found)
+        {
+            return result;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Skill_1();
-        Skill_2();
-        Skill_3();
-        Dash();
+        NormalShoot();
+        Missle();
+        Meteor();
+        Laser();
     }
 
-    void Skill_1()
+    void NormalShoot()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && isCooldown_1 == false)
+        if (Input.GetMouseButtonDown(0) && isCooldownNormal == false)
         {
-            isCooldown_1 = true;
-            skill_1.fillAmount = 1;
+            isCooldownNormal = true;
+            normalShoot.fillAmount = 1;
         }
-        if (isCooldown_1)
+        if (isCooldownNormal)
         {
-            skill_1.fillAmount -= 1 / cooldown_1 * Time.deltaTime;
+            normalShoot.fillAmount -= 1 / cooldownNormal * Time.deltaTime;
 
-            if (skill_1.fillAmount <= 0)
+            if (normalShoot.fillAmount <= 0)
             {
-                skill_1.fillAmount = 0;
-                isCooldown_1 = false;
+                normalShoot.fillAmount = 0;
+                isCooldownNormal = false;
+            }
+        }
+    }
+    void Missle()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && isCooldownMissle == false)
+        {
+            isCooldownMissle = true;
+            missle.fillAmount = 1;
+        }
+        if (isCooldownMissle)
+        {
+            missle.fillAmount -= 1 / cooldownMissle * Time.deltaTime;
+
+            if (missle.fillAmount <= 0)
+            {
+                missle.fillAmount = 0;
+                isCooldownMissle = false;
             }
         }
     }
 
-    void Skill_2()
+    void Meteor()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2) && isCooldown_2 == false)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && isCooldownMeteor == false)
         {
-            isCooldown_2 = true;
-            skill_2.fillAmount = 1;
+            isCooldownMeteor = true;
+            meteor.fillAmount = 1;
         }
-        if (isCooldown_2)
+        if (isCooldownMeteor)
         {
-            skill_2.fillAmount -= 1 / cooldown_2 * Time.deltaTime;
+            meteor.fillAmount -= 1 / cooldownMeteor * Time.deltaTime;
 
-            if (skill_2.fillAmount <= 0)
+            if (meteor.fillAmount <= 0)
             {
-                skill_2.fillAmount = 0;
-                isCooldown_2 = false;
+                meteor.fillAmount = 0;
+                isCooldownMeteor = false;
             }
         }
     }
 
-    void Skill_3()
+
+    void Laser()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3) && isCooldown_3 == false)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && isCooldownLaser == false)
         {
-            isCooldown_3 = true;
-            skill_3.fillAmount = 1;
+            isCooldownLaser = true;
+            laser.fillAmount = 1;
         }
-        if (isCooldown_3)
+        if (isCooldownLaser)
         {
-            skill_3.fillAmount -= 1 / cooldown_3 * Time.deltaTime;
+            laser.fillAmount -= 1 / cooldownLaser * Time.deltaTime;
 
-            if (skill_3.fillAmount <= 0)
+            if (laser.fillAmount <= 0)
             {
-                skill_3.fillAmount = 0;
-                isCooldown_3 = false;
-            }
-        }
-    }
-
-    void Dash()
-    {
-        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && isCooldown_dash == false)
-        {
-            isCooldown_dash = true;
-            dash_img.fillAmount = 1;
-        }
-        if (isCooldown_dash)
-        {
-            dash_img.fillAmount -= 1 / cooldown_dash * Time.deltaTime;
-
-            if (dash_img.fillAmount <= 0)
-            {
-                dash_img.fillAmount = 0;
-                isCooldown_dash = false;
+                laser.fillAmount = 0;
+                isCooldownLaser = false;
             }
         }
     }

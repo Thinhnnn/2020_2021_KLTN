@@ -14,12 +14,14 @@ public class HpManager : MonoBehaviour
     public float bulletDmg = 2f;
     public float missleDmg = 10f;
     public float meteorDmg = 100f;
+    public AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
         getCamera();
         currentHP = maxHP;
         UpdateHP();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -30,16 +32,16 @@ public class HpManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((gameObject.tag == "Enemy" && other.tag == "Bullet") || (gameObject.tag == "Ally" && other.tag == "EnemyBullet"))
-        {
-            //currentHP -= 100f;
-            currentHP -= 100f;
-            UpdateHP();
-        }
+        //if ((gameObject.tag == "Enemy" && other.tag == "Bullet") || (gameObject.tag == "Ally" && other.tag == "EnemyBullet"))
+        //{
+        //    //currentHP -= 100f;
+        //    currentHP -= 100f;
+        //    UpdateHP();
+        //}
 
         if(gameObject.tag == "Enemy")
         {
-            if(other.tag == "EnemyBullet")
+            if(other.tag == "Bullet")
             {
                 currentHP -= bulletDmg;
             }
@@ -53,6 +55,22 @@ public class HpManager : MonoBehaviour
             }
             UpdateHP();
         }
+        else if (gameObject.tag == "Ally")
+        {
+            if (other.tag == "EnemyBullet")
+            {
+                currentHP -= bulletDmg;
+            }
+            else if (other.tag == "EnemyMissle")
+            {
+                currentHP -= missleDmg;
+            }
+            else if (other.tag == "EnemyMeteor")
+            {
+                currentHP -= meteorDmg;
+            }
+            UpdateHP();
+        }
     }
 
     void UpdateHP()
@@ -61,7 +79,8 @@ public class HpManager : MonoBehaviour
         HPSlider.value = value;
         if (currentHP <= 0f)
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); 
+            audioManager.PlaySound("Die");
             //Destroy(gameObject);
         }
     }

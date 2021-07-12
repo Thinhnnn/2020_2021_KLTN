@@ -10,6 +10,7 @@ public class SmartMissleRelease : MonoBehaviour
     public GameObject missle;
     public int mode = 1;
     public float fireRate = 0.5f;
+    public AudioManager audioManager;
 
     public bool isPlayer = false;
     public bool isReloading = false;
@@ -21,6 +22,7 @@ public class SmartMissleRelease : MonoBehaviour
         {
             StartCoroutine(releaseMissle());
         }
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -35,11 +37,26 @@ public class SmartMissleRelease : MonoBehaviour
         }
     }
 
+    public string randomSound()
+    {
+        int i = Random.Range(0, 2);
+        if (i == 0)
+        {
+            return "Missle";
+        }
+        else
+        {
+            return "Missle2";
+        }
+    }
+
     IEnumerator releaseMissle()
     {
+        string sound = randomSound();
         if (mode == 1)
         {
             yield return new WaitForSeconds(reloadTime);
+            audioManager.PlaySound(sound);
             for (int i = 0; i < amount; i++)
             {
                 Instantiate(missle, gun[i].transform.position, gun[i].transform.rotation);
@@ -50,6 +67,7 @@ public class SmartMissleRelease : MonoBehaviour
             yield return new WaitForSeconds(reloadTime);
             for (int i = 0; i < amount; i++)
             {
+                audioManager.PlaySound(sound);
                 Instantiate(missle, gun[i].transform.position, gun[i].transform.rotation);
                 yield return new WaitForSeconds(fireRate);
             }
@@ -59,9 +77,11 @@ public class SmartMissleRelease : MonoBehaviour
 
     IEnumerator playerReleaseMissle()
     {
+        string sound = randomSound();
         isReloading = true;
         if (mode == 1)
         {
+            audioManager.PlaySound(sound);
             for (int i = 0; i < amount; i++)
             {
                 Instantiate(missle, gun[i].transform.position, gun[i].transform.rotation);
@@ -73,6 +93,7 @@ public class SmartMissleRelease : MonoBehaviour
         {
             for (int i = 0; i < amount; i++)
             {
+                audioManager.PlaySound(sound);
                 Instantiate(missle, gun[i].transform.position, gun[i].transform.rotation);
                 yield return new WaitForSeconds(fireRate);
             }

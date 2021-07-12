@@ -2354,6 +2354,7 @@ MonoBehaviour:
   spaceshipManager: {fileID: 0}
   audioManager: {fileID: 0}
   refreshTargetTime: 1
+  isPlayer: 0
 --- !u!135 &6008179438749689168
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2484,7 +2485,7 @@ MonoBehaviour:
   - {fileID: 6008179437495420191}
   - {fileID: 6008179437512009880}
   reloadTime: 5
-  meteor: {fileID: 1218730405892678590, guid: 76a8ac1132e28c546b0cb1e00056a9f9, type: 3}
+  meteor: {fileID: 8129414756732337943, guid: 76a8ac1132e28c546b0cb1e00056a9f9, type: 3}
   mode: 1
   fireRate: 2
   isPlayer: 0

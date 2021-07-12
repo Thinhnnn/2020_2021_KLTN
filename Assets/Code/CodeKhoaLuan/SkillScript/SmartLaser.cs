@@ -15,6 +15,7 @@ public class SmartLaser : MonoBehaviour
     public SpaceshipManager spaceshipManager;
     public GameObject nearestRival;
     public float refreshTime = 1f;
+    public AudioManager audioManager;
 
     public float damage = 100f;
 
@@ -32,6 +33,7 @@ public class SmartLaser : MonoBehaviour
         {
             StartCoroutine(releaseLaser());
         }
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -61,7 +63,18 @@ public class SmartLaser : MonoBehaviour
             }
         }
     }
-
+    public string randomSound()
+    {
+        int i = Random.Range(0, 2);
+        if (i == 0)
+        {
+            return "Laser1";
+        }
+        else
+        {
+            return "Laser2";
+        }
+    }
     IEnumerator updateRival()
     {
         nearestRival = spaceshipManager.nearestRival(this.gameObject);
@@ -73,9 +86,11 @@ public class SmartLaser : MonoBehaviour
     {
         if (canBeam)
         {
+            string sound = randomSound();
             if (mode == 1)
             {
-                yield return new WaitForSeconds(reloadTime);
+                yield return new WaitForSeconds(reloadTime); 
+                audioManager.PlaySound(sound);
                 for (int i = 0; i < amount; i++)
                 {
                     GameObject beam = Instantiate(laser) as GameObject;
@@ -88,6 +103,7 @@ public class SmartLaser : MonoBehaviour
                 yield return new WaitForSeconds(reloadTime);
                 for (int i = 0; i < amount; i++)
                 {
+                    audioManager.PlaySound(sound);
                     GameObject beam = Instantiate(laser) as GameObject;
                     beam.GetComponent<LaserSelfDestruct>().getObject(gun[i], nearestRival);
                     nearestRival.GetComponent<HpManager>().takeLaserDamage(damage);
@@ -108,8 +124,10 @@ public class SmartLaser : MonoBehaviour
         isReloading = true;
         if (canBeam)
         {
+            string sound = randomSound();
             if (mode == 1)
             {
+                audioManager.PlaySound(sound);
                 for (int i = 0; i < amount; i++)
                 {
                     GameObject beam = Instantiate(laser) as GameObject;
@@ -123,6 +141,7 @@ public class SmartLaser : MonoBehaviour
             {
                 for (int i = 0; i < amount; i++)
                 {
+                    audioManager.PlaySound(sound);
                     GameObject beam = Instantiate(laser) as GameObject;
                     beam.GetComponent<LaserSelfDestruct>().getObject(gun[i], nearestRival);
                     nearestRival.GetComponent<HpManager>().takeLaserDamage(damage);

@@ -9,6 +9,7 @@ public class SpaceshipManager : MonoBehaviour
     public GameObject[] Allies;
     public GameObject[] Enemys;
     public float refreshTime = 1f;
+    public GameObject winPanel, losePanel;
     #endregion
 
     // Start is called before the first frame update
@@ -65,6 +66,12 @@ public class SpaceshipManager : MonoBehaviour
         getAllEnemys();
         yield return new WaitForSeconds(refreshTime);
         StartCoroutine(UpdateList());
+        if (Enemys.Length == 0)
+        {
+            winPanel.SetActive(true);
+            SaveAndLoad s = new SaveAndLoad();
+            s.addGold(1500);
+        }
     }
 
     // Update is called once per frame

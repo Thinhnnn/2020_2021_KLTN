@@ -147,9 +147,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1218730405892678591}
   - component: {fileID: 5636860876037386458}
+  - component: {fileID: 3585804494449100329}
   m_Layer: 0
   m_Name: EnemyMeteor
-  m_TagString: Untagged
+  m_TagString: EnemyMeteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,6 +185,19 @@ MonoBehaviour:
   speed: 500
   spinSpeed: 10
   lifeTime: 5
+--- !u!135 &3585804494449100329
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218730405892678590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1218730406299207331
 GameObject:
   m_ObjectHideFlags: 0

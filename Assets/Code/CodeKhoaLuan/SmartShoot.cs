@@ -68,8 +68,30 @@ public class SmartShoot : MonoBehaviour
         StartCoroutine(updateRival());
     }
 
+    public string randomSound()
+    {
+        int i = Random.Range(0, 4);
+        if (i == 0)
+        {
+            return "Shoot";
+        }
+        else if (i == 1)
+        {
+            return "Shoot2";
+        }
+        else if (i == 2)
+        {
+            return "Shoot3";
+        }
+        else
+        {
+            return "Shoot4";
+        }
+    }
+
     IEnumerator normalShoot()
     {
+        string sound = randomSound();
         reloading = true;
         switch (bulletPerOneShoot)
         {
@@ -79,7 +101,8 @@ public class SmartShoot : MonoBehaviour
                     {
                         //tạo ra âm thanh bắn
                         //var x = FindObjectOfType<AudioManager>();
-                        audioManager.PlaySound("Shoot");
+                        //audioManager.PlaySound("Shoot");
+                        audioManager.PlaySound(sound);
                         Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
                         yield return new WaitForSeconds(fireRate);
                     }
@@ -91,7 +114,8 @@ public class SmartShoot : MonoBehaviour
                     {
                         //tạo ra âm thanh bắn
                         //var x = FindObjectOfType<AudioManager>();
-                        audioManager.PlaySound("Shoot");
+                        //audioManager.PlaySound("Shoot");
+                        audioManager.PlaySound(sound);
                         Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
                         Instantiate(bullet, gun[1].transform.position, gun[1].transform.rotation);
                         yield return new WaitForSeconds(fireRate);
@@ -104,7 +128,7 @@ public class SmartShoot : MonoBehaviour
                     {
                         //tạo ra âm thanh bắn
                         //var x = FindObjectOfType<AudioManager>();
-                        audioManager.PlaySound("Shoot");
+                        audioManager.PlaySound(sound);
                         Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
                         Instantiate(bullet, gun[1].transform.position, gun[1].transform.rotation);
                         Instantiate(bullet, gun[2].transform.position, gun[2].transform.rotation);
@@ -118,11 +142,11 @@ public class SmartShoot : MonoBehaviour
                     {
                         //tạo ra âm thanh bắn
                         //var x = FindObjectOfType<AudioManager>();
-                        audioManager.PlaySound("Shoot");
+                        audioManager.PlaySound(sound);
                         Instantiate(bullet, gun[i + 0].transform.position, gun[i + 0].transform.rotation);
                         Instantiate(bullet, gun[i + 1].transform.position, gun[i + 1].transform.rotation);
                         yield return new WaitForSeconds(fireRate);
-                        audioManager.PlaySound("Shoot");
+                        audioManager.PlaySound(sound);
                         Instantiate(bullet, gun[i + 2].transform.position, gun[i + 2].transform.rotation);
                         Instantiate(bullet, gun[i + 3].transform.position, gun[i + 3].transform.rotation);
                         yield return new WaitForSeconds(fireRate);
@@ -135,7 +159,7 @@ public class SmartShoot : MonoBehaviour
                     {
                         //tạo ra âm thanh bắn
                         //var x = FindObjectOfType<AudioManager>();
-                        audioManager.PlaySound("Shoot");
+                        audioManager.PlaySound(sound);
                         Instantiate(bullet, gun[0].transform.position, gun[0].transform.rotation);
                         Instantiate(bullet, gun[1].transform.position, gun[1].transform.rotation);
                         Instantiate(bullet, gun[2].transform.position, gun[2].transform.rotation);

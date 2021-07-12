@@ -52,7 +52,8 @@ public class GameplayManager : MonoBehaviour
     {
         var x = FindObjectOfType<AudioManager>();
         x.PlaySound("Click");
-        SceneManager.LoadScene("GamePlay 1");
+        //SceneManager.LoadScene("GamePlay 1");
+        Loader.Load(Loader.Scene.Level1_Earth);
     }
 
     public void SummonBoss()
