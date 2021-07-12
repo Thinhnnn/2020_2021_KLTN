@@ -19,13 +19,19 @@ public class SmartLaser : MonoBehaviour
     public float damage = 100f;
 
     public bool canBeam = false;
+
+    public bool isPlayer = false;
+    public bool isReloading = false;
     // Start is called before the first frame update
     void Start()
     {
         canBeam = false;
         spaceshipManager = FindObjectOfType<SpaceshipManager>();
         StartCoroutine(updateRival());
-        StartCoroutine(releaseLaser());
+        if (!isPlayer)
+        {
+            StartCoroutine(releaseLaser());
+        }
     }
 
     // Update is called once per frame
@@ -45,6 +51,14 @@ public class SmartLaser : MonoBehaviour
         else
         {
             canBeam = false;
+        }
+
+        if (isPlayer)
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha3) && !isReloading)
+            {
+                StartCoroutine(playerReleaseLaser());
+            }
         }
     }
 
@@ -86,6 +100,42 @@ public class SmartLaser : MonoBehaviour
         {
             yield return new WaitForSeconds(reloadTime);
             StartCoroutine(releaseLaser());
+        }
+    }
+
+    IEnumerator playerReleaseLaser()
+    {
+        isReloading = true;
+        if (canBeam)
+        {
+            if (mode == 1)
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    GameObject beam = Instantiate(laser) as GameObject;
+                    beam.GetComponent<LaserSelfDestruct>().getObject(gun[i], nearestRival);
+                    nearestRival.GetComponent<HpManager>().takeLaserDamage(damage);
+                }
+                yield return new WaitForSeconds(reloadTime);
+                isReloading = false;
+            }
+            else if (mode == 2)
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    GameObject beam = Instantiate(laser) as GameObject;
+                    beam.GetComponent<LaserSelfDestruct>().getObject(gun[i], nearestRival);
+                    nearestRival.GetComponent<HpManager>().takeLaserDamage(damage);
+                    yield return new WaitForSeconds(fireRate);
+                }
+                yield return new WaitForSeconds(reloadTime - fireRate * amount);
+                isReloading = false;
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(fireRate);
+            isReloading = false;
         }
     }
 }

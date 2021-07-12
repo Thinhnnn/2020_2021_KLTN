@@ -1208,7 +1208,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6008179438155738889
 MonoBehaviour:
@@ -1773,6 +1773,7 @@ MonoBehaviour:
   - {fileID: 6008179438478314578}
   - {fileID: 6008179438931760896}
   bulletPerOneShoot: 2
+  isPlayer: 0
 --- !u!114 &6008179438749689167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,6 +1791,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   maxHP: 2000
   currentHP: 2000
+  bulletDmg: 2
+  missleDmg: 10
+  meteorDmg: 100
 --- !u!114 &6008179438749689164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1817,6 +1821,8 @@ MonoBehaviour:
   missle: {fileID: 7807566644932623231, guid: 47f8213c6a8b05e41b094add8105d59c, type: 3}
   mode: 1
   fireRate: 0.5
+  isPlayer: 0
+  isReloading: 0
 --- !u!114 &6008179438749689165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1838,6 +1844,8 @@ MonoBehaviour:
   meteor: {fileID: 1218730405892678590, guid: 76a8ac1132e28c546b0cb1e00056a9f9, type: 3}
   mode: 1
   fireRate: 2
+  isPlayer: 0
+  isReloading: 0
 --- !u!114 &6008179438749689162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1863,8 +1871,10 @@ MonoBehaviour:
   spaceshipManager: {fileID: 0}
   nearestRival: {fileID: 0}
   refreshTime: 1
-  damage: 100
+  damage: 50
   canBeam: 0
+  isPlayer: 0
+  isReloading: 0
 --- !u!1 &6008179438782263165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,7 +1969,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6008179438823566300
 MonoBehaviour:
@@ -2371,7 +2381,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6296701617544006037
 MonoBehaviour:

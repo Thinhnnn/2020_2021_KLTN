@@ -11,16 +11,28 @@ public class SmartMissleRelease : MonoBehaviour
     public int mode = 1;
     public float fireRate = 0.5f;
 
+    public bool isPlayer = false;
+    public bool isReloading = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(releaseMissle());
+        if (!isPlayer)
+        {
+            StartCoroutine(releaseMissle());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isPlayer)
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha1) && !isReloading)
+            {
+                StartCoroutine(playerReleaseMissle());
+            }
+        }
     }
 
     IEnumerator releaseMissle()
@@ -43,5 +55,29 @@ public class SmartMissleRelease : MonoBehaviour
             }
         }
         StartCoroutine(releaseMissle());
+    }
+
+    IEnumerator playerReleaseMissle()
+    {
+        isReloading = true;
+        if (mode == 1)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                Instantiate(missle, gun[i].transform.position, gun[i].transform.rotation);
+            }
+            yield return new WaitForSeconds(reloadTime);
+            isReloading = false;
+        }
+        else if (mode == 2)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                Instantiate(missle, gun[i].transform.position, gun[i].transform.rotation);
+                yield return new WaitForSeconds(fireRate);
+            }
+            yield return new WaitForSeconds(reloadTime - fireRate * amount);
+            isReloading = false;
+        }
     }
 }

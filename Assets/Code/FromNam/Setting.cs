@@ -121,6 +121,8 @@ public class Setting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(Time.timeScale);
+        Time.timeScale = 1;
         resolutions = new Resolution[2];
 
         resolutions[0].width = 1280;

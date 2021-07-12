@@ -1377,7 +1377,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6008179438155738889
 MonoBehaviour:
@@ -1945,6 +1945,7 @@ MonoBehaviour:
   - {fileID: 2937569777484582210}
   - {fileID: 8708757010992489560}
   bulletPerOneShoot: 4
+  isPlayer: 0
 --- !u!114 &6008179438749689167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1962,6 +1963,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   maxHP: 2000
   currentHP: 2000
+  bulletDmg: 2
+  missleDmg: 10
+  meteorDmg: 100
 --- !u!114 &6008179438749689164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,6 +1993,8 @@ MonoBehaviour:
   missle: {fileID: 7807566644932623231, guid: be3ae80f83307544fbe29eb3787ec0b8, type: 3}
   mode: 1
   fireRate: 0.5
+  isPlayer: 0
+  isReloading: 0
 --- !u!114 &6008179438749689165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,10 +2012,12 @@ MonoBehaviour:
   - {fileID: 6008179438045132479}
   - {fileID: 6008179437495420191}
   - {fileID: 6008179437512009880}
-  reloadTime: 5
+  reloadTime: 7.3
   meteor: {fileID: 1218730405892678590, guid: 76a8ac1132e28c546b0cb1e00056a9f9, type: 3}
   mode: 2
   fireRate: 2
+  isPlayer: 0
+  isReloading: 0
 --- !u!114 &6008179438749689162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,7 +2035,7 @@ MonoBehaviour:
   - {fileID: 6008179437746232767}
   - {fileID: 6008179437096026657}
   - {fileID: 6008179438083580033}
-  reloadTime: 5
+  reloadTime: 4.5
   laser: {fileID: 2823888342290167783, guid: 00bd37b1a8858ad4bb23a011971ff571, type: 3}
   mode: 1
   fireRate: 2
@@ -2035,8 +2043,10 @@ MonoBehaviour:
   spaceshipManager: {fileID: 0}
   nearestRival: {fileID: 0}
   refreshTime: 1
-  damage: 100
+  damage: 50
   canBeam: 0
+  isPlayer: 0
+  isReloading: 0
 --- !u!1 &6008179438782263165
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,7 +2141,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &6008179438823566300
 MonoBehaviour:

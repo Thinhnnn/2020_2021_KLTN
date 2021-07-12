@@ -11,16 +11,28 @@ public class SmartMeteorRelease : MonoBehaviour
     public int mode = 1;
     public float fireRate = 2f;
 
+    public bool isPlayer = false;
+    public bool isReloading = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(releaseMeteor());
+        if (!isPlayer)
+        {
+            StartCoroutine(releaseMeteor());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (isPlayer)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha2) && !isReloading)
+            {
+                StartCoroutine(playerReleaseMeteor());
+            }
+        }
     }
 
     IEnumerator releaseMeteor()
@@ -43,5 +55,29 @@ public class SmartMeteorRelease : MonoBehaviour
             }
         }
         StartCoroutine(releaseMeteor());
+    }
+
+    IEnumerator playerReleaseMeteor()
+    {
+        isReloading = true;
+        if (mode == 1)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                Instantiate(meteor, gun[i].transform.position, gun[i].transform.rotation);
+            }
+            yield return new WaitForSeconds(reloadTime);
+            isReloading = false;
+        }
+        else if (mode == 2)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                Instantiate(meteor, gun[0].transform.position, gun[0].transform.rotation);
+                yield return new WaitForSeconds(fireRate);
+            }
+            yield return new WaitForSeconds(reloadTime - fireRate * amount);
+            isReloading = false;
+        }
     }
 }

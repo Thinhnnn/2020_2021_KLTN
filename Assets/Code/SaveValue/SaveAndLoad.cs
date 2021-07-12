@@ -25,11 +25,13 @@ public class SaveAndLoad
 
     public int MyMoney()
     {
-        string path = "Assets/Code/SaveValue/Money.txt";
-        StreamReader reader = new StreamReader(path);
-        string value = reader.ReadToEnd();
-        reader.Close();
-        return int.Parse(value);
+        //string path = "Assets/Code/SaveValue/Money.txt";
+        //StreamReader reader = new StreamReader(path);
+        //string value = reader.ReadToEnd();
+        //reader.Close();
+        //return int.Parse(value);
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Gold.txt");
+        return int.Parse(value[0].ToString());
     }
 
     public float myPower(string fileName)
@@ -59,5 +61,13 @@ public class SaveAndLoad
     {
         string[] value = System.IO.File.ReadAllLines("Data/Jet/Level.txt");
         return int.Parse(value[0]);
+    }
+
+    public void makePayment()
+    {
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Gold.txt");
+        float currentValue = float.Parse(value[0]);
+        value[0] = (currentValue -1000).ToString();
+        File.WriteAllLines("Data/Jet/Gold.txt", value);
     }
 }

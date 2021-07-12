@@ -20,6 +20,8 @@ public class SmartShoot : MonoBehaviour
 
     public GameObject[] gun;
     public int bulletPerOneShoot = 1;
+
+    public bool isPlayer = false;
     #endregion
 
     // Start is called before the first frame update
@@ -34,11 +36,27 @@ public class SmartShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearestRival != null)
+        if (isPlayer)
         {
-            if ((Vector3.Distance(transform.position, nearestRival.transform.position) < fightRange) && reloading == false)
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
-                StartCoroutine(normalShoot());
+                if (nearestRival != null)
+                {
+                    if ((Vector3.Distance(transform.position, nearestRival.transform.position) < fightRange) && reloading == false)
+                    {
+                        StartCoroutine(normalShoot());
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (nearestRival != null)
+            {
+                if ((Vector3.Distance(transform.position, nearestRival.transform.position) < fightRange) && reloading == false)
+                {
+                    StartCoroutine(normalShoot());
+                }
             }
         }
     }

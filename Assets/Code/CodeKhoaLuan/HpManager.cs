@@ -10,6 +10,10 @@ public class HpManager : MonoBehaviour
     public Camera cam;
     public float maxHP = 1000f;
     public float currentHP = 1000f;
+
+    public float bulletDmg = 2f;
+    public float missleDmg = 10f;
+    public float meteorDmg = 100f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +33,24 @@ public class HpManager : MonoBehaviour
         if ((gameObject.tag == "Enemy" && other.tag == "Bullet") || (gameObject.tag == "Ally" && other.tag == "EnemyBullet"))
         {
             //currentHP -= 100f;
-            currentHP -= 1f;
+            currentHP -= 100f;
+            UpdateHP();
+        }
+
+        if(gameObject.tag == "Enemy")
+        {
+            if(other.tag == "EnemyBullet")
+            {
+                currentHP -= bulletDmg;
+            }
+            else if(other.tag == "AllyMissle")
+            {
+                currentHP -= missleDmg;
+            }
+            else if (other.tag == "AllyMeteor")
+            {
+                currentHP -= meteorDmg;
+            }
             UpdateHP();
         }
     }
@@ -41,6 +62,7 @@ public class HpManager : MonoBehaviour
         if (currentHP <= 0f)
         {
             gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
     }
 

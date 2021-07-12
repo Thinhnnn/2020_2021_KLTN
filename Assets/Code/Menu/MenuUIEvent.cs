@@ -13,6 +13,7 @@ public class MenuUIEvent : MonoBehaviour
     public GameObject settingPanel;
     public GameObject jetProfilePanel;
     public GameObject levelSelectPanel;
+    public Text myMoney;
 
     [SerializeField] GameObject moveScript, mouseScript;
 
@@ -36,6 +37,7 @@ public class MenuUIEvent : MonoBehaviour
     void Start()
     {
         a = new SaveAndLoad();
+        myMoney.text = a.MyMoney().ToString();
         multipleValue.text = "Power x " + a.myPower("jet1.txt").ToString();
         HideAllJet();
         ShowJetWithIndex(0);
@@ -220,6 +222,13 @@ public class MenuUIEvent : MonoBehaviour
     {
         a.upgradeMultipleValue(index);
         loadJetMultipleValue();
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
+        if (a.MyMoney() >= 1000)
+        {
+            a.makePayment();
+            myMoney.text = a.MyMoney().ToString();
+        }
     }
     #endregion
 

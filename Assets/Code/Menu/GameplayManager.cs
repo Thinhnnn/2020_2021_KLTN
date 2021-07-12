@@ -36,7 +36,8 @@ public class GameplayManager : MonoBehaviour
     {
         var x = FindObjectOfType<AudioManager>();
         x.PlaySound("Click");
-        SceneManager.LoadScene("Menu");
+        //SceneManager.LoadScene("Menu");
+        Loader.Load(Loader.Scene.Menu);
     }
 
     public void MinimizeSetting()
