@@ -36,17 +36,44 @@ public class UsingSkill : MonoBehaviour
         if (ship != null)
         {
             cooldownNormal = ship.GetComponent<SmartShoot>().reloadTime;
+            if (ship.GetComponent<SmartShoot>().ammount != 0)
+            {
+                cooldownNormal = ship.GetComponent<SmartShoot>().reloadTime;
+            }
+            else
+            {
+                cooldownNormal = 0;
+                normalShoot.fillAmount = 1;
+            }
+
             if (ship.GetComponent<SmartMissleRelease>().amount != 0)
             {
                 cooldownMissle = ship.GetComponent<SmartMissleRelease>().reloadTime;
             }
+            else
+            {
+                cooldownMissle = 0;
+                missle.fillAmount = 1;
+            }
+
             if (ship.GetComponent<SmartMeteorRelease>().amount != 0)
             {
                 cooldownMeteor = ship.GetComponent<SmartMeteorRelease>().reloadTime;
             }
-            if (ship.GetComponent<SmartMissleRelease>().amount != 0)
+            else
+            {
+                cooldownMeteor = 0;
+                meteor.fillAmount = 1;
+            }
+
+            if (ship.GetComponent<SmartLaser>().amount != 0)
             {
                 cooldownLaser = ship.GetComponent<SmartLaser>().reloadTime;
+            }
+            else
+            {
+                cooldownLaser = 0;
+                laser.fillAmount = 1;
             }
         }
     }
@@ -86,77 +113,93 @@ public class UsingSkill : MonoBehaviour
 
     void NormalShoot()
     {
-        if (Input.GetMouseButtonDown(0) && isCooldownNormal == false)
+        if (cooldownNormal != 0)
         {
-            isCooldownNormal = true;
-            normalShoot.fillAmount = 1;
-        }
-        if (isCooldownNormal)
-        {
-            normalShoot.fillAmount -= 1 / cooldownNormal * Time.deltaTime;
-
-            if (normalShoot.fillAmount <= 0)
+            if (Input.GetMouseButtonDown(0) && isCooldownNormal == false)
             {
-                normalShoot.fillAmount = 0;
-                isCooldownNormal = false;
+                isCooldownNormal = true;
+                normalShoot.fillAmount = 1;
+            }
+            if (isCooldownNormal)
+            {
+                normalShoot.fillAmount -= 1 / cooldownNormal * Time.deltaTime;
+
+                if (normalShoot.fillAmount <= 0)
+                {
+                    normalShoot.fillAmount = 0;
+                    isCooldownNormal = false;
+                }
             }
         }
+        
     }
     void Missle()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && isCooldownMissle == false)
+        if (cooldownMissle != 0)
         {
-            isCooldownMissle = true;
-            missle.fillAmount = 1;
-        }
-        if (isCooldownMissle)
-        {
-            missle.fillAmount -= 1 / cooldownMissle * Time.deltaTime;
-
-            if (missle.fillAmount <= 0)
+            if (Input.GetKeyDown(KeyCode.Alpha1) && isCooldownMissle == false)
             {
-                missle.fillAmount = 0;
-                isCooldownMissle = false;
+                isCooldownMissle = true;
+                missle.fillAmount = 1;
+            }
+            if (isCooldownMissle)
+            {
+                missle.fillAmount -= 1 / cooldownMissle * Time.deltaTime;
+
+                if (missle.fillAmount <= 0)
+                {
+                    missle.fillAmount = 0;
+                    isCooldownMissle = false;
+                }
             }
         }
+        
     }
 
     void Meteor()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2) && isCooldownMeteor == false)
+        if (cooldownMeteor != 0)
         {
-            isCooldownMeteor = true;
-            meteor.fillAmount = 1;
-        }
-        if (isCooldownMeteor)
-        {
-            meteor.fillAmount -= 1 / cooldownMeteor * Time.deltaTime;
-
-            if (meteor.fillAmount <= 0)
+            if (Input.GetKeyDown(KeyCode.Alpha2) && isCooldownMeteor == false)
             {
-                meteor.fillAmount = 0;
-                isCooldownMeteor = false;
+                isCooldownMeteor = true;
+                meteor.fillAmount = 1;
+            }
+            if (isCooldownMeteor)
+            {
+                meteor.fillAmount -= 1 / cooldownMeteor * Time.deltaTime;
+
+                if (meteor.fillAmount <= 0)
+                {
+                    meteor.fillAmount = 0;
+                    isCooldownMeteor = false;
+                }
             }
         }
+        
     }
 
 
     void Laser()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3) && isCooldownLaser == false)
+        if (cooldownLaser != 0)
         {
-            isCooldownLaser = true;
-            laser.fillAmount = 1;
-        }
-        if (isCooldownLaser)
-        {
-            laser.fillAmount -= 1 / cooldownLaser * Time.deltaTime;
-
-            if (laser.fillAmount <= 0)
+            if (Input.GetKeyDown(KeyCode.Alpha3) && isCooldownLaser == false)
             {
-                laser.fillAmount = 0;
-                isCooldownLaser = false;
+                isCooldownLaser = true;
+                laser.fillAmount = 1;
+            }
+            if (isCooldownLaser)
+            {
+                laser.fillAmount -= 1 / cooldownLaser * Time.deltaTime;
+
+                if (laser.fillAmount <= 0)
+                {
+                    laser.fillAmount = 0;
+                    isCooldownLaser = false;
+                }
             }
         }
+        
     }
 }

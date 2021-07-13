@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00920873, g: 0.061625615, b: 0.15861535, a: 1}
+  m_IndirectSpecularColor: {r: 0.009193718, g: 0.06158772, b: 0.15841958, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -511,7 +511,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deep Tanker
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6008179438749689171, guid: 575c5e1efca5f8748aa6c0591122b1b3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 575c5e1efca5f8748aa6c0591122b1b3, type: 3}
 --- !u!4 &225585927 stripped
 Transform:
@@ -765,7 +766,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281416721}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
@@ -1104,7 +1105,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dervain Beetle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6008179438749689171, guid: 1749658c53d00d346a5a6e94923e079e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1749658c53d00d346a5a6e94923e079e, type: 3}
 --- !u!1001 &426295536
 PrefabInstance:
@@ -1213,7 +1215,8 @@ PrefabInstance:
       propertyPath: tumble
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5444550, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
 --- !u!1 &434109767
 GameObject:
@@ -1309,7 +1312,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444835540}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
@@ -1590,7 +1593,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487363916}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
@@ -2523,7 +2526,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751221166}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
@@ -4581,7 +4584,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dervain Beetle (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6008179438749689171, guid: 1749658c53d00d346a5a6e94923e079e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1749658c53d00d346a5a6e94923e079e, type: 3}
 --- !u!1 &1029279759
 GameObject:
@@ -5009,7 +5013,8 @@ PrefabInstance:
       propertyPath: tumble
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5444550, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
 --- !u!1 &1113192490
 GameObject:
@@ -5689,7 +5694,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Viper
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6008179438749689171, guid: b0a8e9445cad1624aaa649820a9d004a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b0a8e9445cad1624aaa649820a9d004a, type: 3}
 --- !u!4 &1196294189 stripped
 Transform:
@@ -6117,7 +6123,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258411096}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -6321,7 +6327,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279433202}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7026,7 +7032,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455498880}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -7155,7 +7161,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dervain R-Launcher
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6008179438749689171, guid: 551187135fe6ed9478e08faf78edb8c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 551187135fe6ed9478e08faf78edb8c1, type: 3}
 --- !u!1 &1465963992
 GameObject:
@@ -7429,7 +7436,8 @@ PrefabInstance:
       propertyPath: tumble
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5444550, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
 --- !u!1 &1494054831
 GameObject:
@@ -7883,7 +7891,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645037289}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -8684,7 +8692,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dervain Beetle (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6008179438749689171, guid: 1749658c53d00d346a5a6e94923e079e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1749658c53d00d346a5a6e94923e079e, type: 3}
 --- !u!1 &1837730020
 GameObject:
@@ -9099,7 +9108,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Beamer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6008179438749689171, guid: cf7dd92f03ed3df4b9466c673982c0fe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cf7dd92f03ed3df4b9466c673982c0fe, type: 3}
 --- !u!1 &1961175362
 GameObject:
@@ -9297,7 +9307,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5444550, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
 --- !u!1 &2008332926
 GameObject:
