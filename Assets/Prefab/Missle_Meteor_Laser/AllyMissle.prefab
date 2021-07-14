@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spaceshipManager: {fileID: 0}
-  speed: 450
+  speed: 800
   lifeTime: 5
   turnSpeed: 5
   target: {fileID: 0}

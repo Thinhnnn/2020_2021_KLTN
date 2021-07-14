@@ -68,10 +68,15 @@ public class SpaceshipManager : MonoBehaviour
         StartCoroutine(UpdateList());
         if (Enemys.Length == 0)
         {
-            winPanel.SetActive(true);
-            SaveAndLoad s = new SaveAndLoad();
-            s.addGold(1500);
+            Win();
         }
+    }
+
+    public void Win()
+    {
+        winPanel.SetActive(true);
+        SaveAndLoad s = new SaveAndLoad();
+        s.addGold(1500);
     }
 
     // Update is called once per frame

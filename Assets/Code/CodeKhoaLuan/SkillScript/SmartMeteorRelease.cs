@@ -14,10 +14,12 @@ public class SmartMeteorRelease : MonoBehaviour
 
     public bool isPlayer = false;
     public bool isReloading = false;
+    string sound;
 
     // Start is called before the first frame update
     void Start()
     {
+        sound = randomSound();
         if (!isPlayer)
         {
             StartCoroutine(releaseMeteor());
@@ -51,7 +53,6 @@ public class SmartMeteorRelease : MonoBehaviour
 
     IEnumerator releaseMeteor()
     {
-        string sound = randomSound();
         if (mode == 1)
         {
             yield return new WaitForSeconds(reloadTime); 
@@ -76,7 +77,7 @@ public class SmartMeteorRelease : MonoBehaviour
 
     IEnumerator playerReleaseMeteor()
     {
-        string sound = randomSound();
+        //string sound = randomSound();
         isReloading = true;
         if (mode == 1)
         {

@@ -14,10 +14,12 @@ public class SmartMissleRelease : MonoBehaviour
 
     public bool isPlayer = false;
     public bool isReloading = false;
+    string sound;
 
     // Start is called before the first frame update
     void Start()
     {
+        sound = randomSound();
         if (!isPlayer)
         {
             StartCoroutine(releaseMissle());
@@ -52,7 +54,6 @@ public class SmartMissleRelease : MonoBehaviour
 
     IEnumerator releaseMissle()
     {
-        string sound = randomSound();
         if (mode == 1)
         {
             yield return new WaitForSeconds(reloadTime);
@@ -77,7 +78,7 @@ public class SmartMissleRelease : MonoBehaviour
 
     IEnumerator playerReleaseMissle()
     {
-        string sound = randomSound();
+        //string sound = randomSound();
         isReloading = true;
         if (mode == 1)
         {

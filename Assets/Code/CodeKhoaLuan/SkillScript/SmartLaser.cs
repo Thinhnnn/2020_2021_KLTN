@@ -23,9 +23,11 @@ public class SmartLaser : MonoBehaviour
 
     public bool isPlayer = false;
     public bool isReloading = false;
+    string sound;
     // Start is called before the first frame update
     void Start()
     {
+        sound = randomSound();
         canBeam = false;
         spaceshipManager = FindObjectOfType<SpaceshipManager>();
         StartCoroutine(updateRival());
@@ -86,7 +88,6 @@ public class SmartLaser : MonoBehaviour
     {
         if (canBeam)
         {
-            string sound = randomSound();
             if (mode == 1)
             {
                 yield return new WaitForSeconds(reloadTime); 
@@ -124,7 +125,7 @@ public class SmartLaser : MonoBehaviour
         isReloading = true;
         if (canBeam)
         {
-            string sound = randomSound();
+            //string sound = randomSound();
             if (mode == 1)
             {
                 audioManager.PlaySound(sound);

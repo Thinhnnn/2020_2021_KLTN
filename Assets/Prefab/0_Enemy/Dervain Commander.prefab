@@ -1699,7 +1699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4771d68de1980943b596e63819fb40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fightRange: 1000
+  fightRange: 5000
   target: {fileID: 0}
   aimVector: {fileID: 6008179438025099866}
   rightVector: {fileID: 6008179438069268961}
@@ -1713,6 +1713,7 @@ MonoBehaviour:
   spaceshipManager: {fileID: 0}
   audioManager: {fileID: 0}
   refreshTargetTime: 1
+  isPlayer: 0
 --- !u!135 &6008179438749689168
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1793,6 +1794,7 @@ MonoBehaviour:
   bulletDmg: 2
   missleDmg: 10
   meteorDmg: 100
+  audioManager: {fileID: 0}
 --- !u!114 &6008179438749689164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,6 +1822,7 @@ MonoBehaviour:
   missle: {fileID: 7807566644932623231, guid: 47f8213c6a8b05e41b094add8105d59c, type: 3}
   mode: 1
   fireRate: 0.5
+  audioManager: {fileID: 0}
   isPlayer: 0
   isReloading: 0
 --- !u!114 &6008179438749689165
@@ -1843,6 +1846,7 @@ MonoBehaviour:
   meteor: {fileID: 1218730405892678590, guid: 55f3d8caf16acd8408d7ae89b4a77663, type: 3}
   mode: 1
   fireRate: 2
+  audioManager: {fileID: 0}
   isPlayer: 0
   isReloading: 0
 --- !u!114 &6008179438749689162
@@ -1866,10 +1870,11 @@ MonoBehaviour:
   laser: {fileID: 2823888342290167783, guid: a4b79cbc1ce5a0b41b6a6095fac7bb8b, type: 3}
   mode: 1
   fireRate: 2
-  fightRange: 1500
+  fightRange: 6000
   spaceshipManager: {fileID: 0}
   nearestRival: {fileID: 0}
   refreshTime: 1
+  audioManager: {fileID: 0}
   damage: 100
   canBeam: 0
   isPlayer: 0

@@ -22,11 +22,13 @@ public class SmartShoot : MonoBehaviour
     public int bulletPerOneShoot = 1;
 
     public bool isPlayer = false;
+    string sound;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        sound = randomSound();
         spaceshipManager = FindObjectOfType<SpaceshipManager>();
         audioManager = FindObjectOfType<AudioManager>();
         StartCoroutine(updateRival());
@@ -91,7 +93,6 @@ public class SmartShoot : MonoBehaviour
 
     IEnumerator normalShoot()
     {
-        string sound = randomSound();
         reloading = true;
         switch (bulletPerOneShoot)
         {

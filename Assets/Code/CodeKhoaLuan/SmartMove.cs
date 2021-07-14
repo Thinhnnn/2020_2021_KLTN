@@ -118,11 +118,12 @@ public class SmartMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(this.tag + ", " + other.tag);
         //nếu sắp va phải vật gì đó, và đang KHÔNG trong trạng thái né
         if (!isDodging && (other.tag == "Ally" || other.tag == "Enemy" || other.tag == "Environment"))
         {
             //Debug.Log(gameObject.name + " hit " + other.name);
-            if(Vector3.Distance(other.transform.position, rightDodge.transform.position) > Vector3.Distance(other.transform.position, leftDodge.transform.position))
+            if (Vector3.Distance(other.transform.position, rightDodge.transform.position) > Vector3.Distance(other.transform.position, leftDodge.transform.position))
             {
                 wayToDodge = rightDodge;
             }
@@ -147,16 +148,24 @@ public class SmartMove : MonoBehaviour
     #region thay đổi mục tiêu mới khi mục tiêu đã bị bắn hạ
     IEnumerator CheckTarget()
     {
-        if (target.active == false || target == null)
-        {
-            try
-            {
-                target = spaceshipManager.nearestRival(gameObject);
-            }
-            catch
-            {
+        //if (target.active == false || target == null)
+        //{
+        //    try
+        //    {
+        //        target = spaceshipManager.nearestRival(gameObject);
+        //    }
+        //    catch
+        //    {
 
-            }
+        //    }
+        //}
+        try
+        {
+            target = spaceshipManager.nearestRival(gameObject);
+        }
+        catch
+        {
+
         }
         yield return new WaitForSeconds(refreshTargetTime);
         StartCoroutine(CheckTarget());
