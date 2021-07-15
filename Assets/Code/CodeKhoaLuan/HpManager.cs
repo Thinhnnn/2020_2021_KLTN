@@ -15,6 +15,8 @@ public class HpManager : MonoBehaviour
     public float missleDmg = 10f;
     public float meteorDmg = 100f;
     public AudioManager audioManager;
+
+    public GameObject explotion;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +83,7 @@ public class HpManager : MonoBehaviour
         {
             gameObject.SetActive(false); 
             audioManager.PlaySound("Die");
+            Instantiate(explotion, transform.position, transform.rotation);
             //Destroy(gameObject);
         }
     }

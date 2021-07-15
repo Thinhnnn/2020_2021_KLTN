@@ -10,6 +10,8 @@ public class SpaceshipManager : MonoBehaviour
     public GameObject[] Enemys;
     public float refreshTime = 1f;
     public GameObject winPanel, losePanel;
+
+    bool winAnimation = false;
     #endregion
 
     // Start is called before the first frame update
@@ -66,14 +68,20 @@ public class SpaceshipManager : MonoBehaviour
         getAllEnemys();
         yield return new WaitForSeconds(refreshTime);
         StartCoroutine(UpdateList());
-        if (Enemys.Length == 0)
+        if (Enemys.Length == 0 && winAnimation == false)
         {
-            Win();
+            winAnimation = true;
+            StartCoroutine(Win());
+        }
+        else
+        {
+            winAnimation = false;
         }
     }
 
-    public void Win()
+    public IEnumerator Win()
     {
+        yield return new WaitForSeconds(3f);
         winPanel.SetActive(true);
         SaveAndLoad s = new SaveAndLoad();
         s.addGold(1500);

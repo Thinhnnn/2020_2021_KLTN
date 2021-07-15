@@ -1795,6 +1795,8 @@ MonoBehaviour:
   missleDmg: 10
   meteorDmg: 100
   audioManager: {fileID: 0}
+  explotion: {fileID: 1388890619269923616, guid: 4afd10523a2994340b56d75fb0162579,
+    type: 3}
 --- !u!114 &6008179438749689164
 MonoBehaviour:
   m_ObjectHideFlags: 0
