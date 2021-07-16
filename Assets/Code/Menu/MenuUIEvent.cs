@@ -13,7 +13,9 @@ public class MenuUIEvent : MonoBehaviour
     public GameObject settingPanel;
     public GameObject jetProfilePanel;
     public GameObject levelSelectPanel;
+    public GameObject firstPanel;
     public Text myMoney;
+    public TextMeshProUGUI waitForClick;
 
     [SerializeField] GameObject moveScript, mouseScript;
 
@@ -45,6 +47,13 @@ public class MenuUIEvent : MonoBehaviour
 
         loadJetMultipleValue();
         loadJetUnlockStatus();
+        StartCoroutine(textAnim());
+        Debug.Log("cache" + CacheLevel.currentLevel);
+        Debug.Log("unlock level" + a.unlockLevel());
+        if (CacheLevel.currentLevel >= 0)
+        {
+            firstPanel.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -270,7 +279,36 @@ public class MenuUIEvent : MonoBehaviour
     #region load scene method
     public void switchToLevel(int index)
     {
-        Loader.Load(Loader.Scene.Level1_Earth);
+        if (index < a.unlockLevel())
+        {
+            CacheLevel.currentLevel = index;
+            switch (index)
+            {
+                case 0: { Loader.Load(Loader.Scene.Level1_Mercury); break; }
+                case 1: { Loader.Load(Loader.Scene.Level2_Venus); break; }
+                case 2: { Loader.Load(Loader.Scene.Level3_Earth); break; }
+                case 3: { Loader.Load(Loader.Scene.Level4_Mars); break; }
+                case 4: { Loader.Load(Loader.Scene.Level5_Jupiter); break; }
+                case 5: { Loader.Load(Loader.Scene.Level6_Saturn); break; }
+                case 6: { Loader.Load(Loader.Scene.Level7_Uranus); break; }
+                case 7: { Loader.Load(Loader.Scene.Level8_Neptune); break; }
+            }
+            
+        }
     }
     #endregion
+
+    IEnumerator textAnim()
+    {
+        waitForClick.DOFade(0f, 1f);
+        yield return new WaitForSeconds(1.1f);
+        waitForClick.DOFade(1f, 1f);
+        yield return new WaitForSeconds(1.1f);
+        StartCoroutine(textAnim());
+    }
+
+    public void hideFirstPanel()
+    {
+        firstPanel.SetActive(false);
+    } 
 }

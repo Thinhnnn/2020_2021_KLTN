@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpaceshipManager : MonoBehaviour
 {
@@ -11,13 +12,25 @@ public class SpaceshipManager : MonoBehaviour
     public float refreshTime = 1f;
     public GameObject winPanel, losePanel;
 
+    public TextMeshProUGUI allyCount, enemyCount;
+
     bool winAnimation = false;
     #endregion
 
     // Start is called before the first frame update
     void Awake()
     {
+        allyCount.text = "";
+        enemyCount.text = "";
+        //StartCoroutine(delayShipCount());
         StartCoroutine(UpdateList());
+    }
+
+    IEnumerator delayShipCount()
+    {
+        yield return new WaitForSeconds(1f);
+        allyCount.text = Allies.Length.ToString();
+        enemyCount.text = Enemys.Length.ToString();
     }
 
     #region cập nhật danh sách các đối tượng
@@ -64,10 +77,11 @@ public class SpaceshipManager : MonoBehaviour
 
     IEnumerator UpdateList()
     {
+        allyCount.text = Allies.Length.ToString();
+        enemyCount.text = Enemys.Length.ToString();
         getAllAllies();
         getAllEnemys();
         yield return new WaitForSeconds(refreshTime);
-        StartCoroutine(UpdateList());
         if (Enemys.Length == 0 && winAnimation == false)
         {
             winAnimation = true;
@@ -77,6 +91,7 @@ public class SpaceshipManager : MonoBehaviour
         {
             winAnimation = false;
         }
+        StartCoroutine(UpdateList());
     }
 
     public IEnumerator Win()

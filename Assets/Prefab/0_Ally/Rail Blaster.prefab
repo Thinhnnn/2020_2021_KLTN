@@ -1705,7 +1705,7 @@ MonoBehaviour:
   rightVector: {fileID: 6008179438069268961}
   rightDodge: {fileID: 6008179438884159160}
   leftDodge: {fileID: 6008179437641841948}
-  flySpeed: 50
+  flySpeed: 100
   turnSpeed: 1
   wayToDodge: {fileID: 0}
   isDodging: 0
@@ -1868,7 +1868,7 @@ MonoBehaviour:
   - {fileID: 6008179437746232767}
   - {fileID: 6008179437096026657}
   - {fileID: 6008179438083580033}
-  reloadTime: 30
+  reloadTime: 11
   laser: {fileID: 2823888342290167783, guid: 93791a8c665136c45b8674824a43ea77, type: 3}
   mode: 1
   fireRate: 2
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   nearestRival: {fileID: 0}
   refreshTime: 1
   audioManager: {fileID: 0}
-  damage: 1000
+  damage: 1800
   canBeam: 0
   isPlayer: 0
   isReloading: 0

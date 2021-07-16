@@ -2346,7 +2346,7 @@ MonoBehaviour:
   rightVector: {fileID: 6008179438069268961}
   rightDodge: {fileID: 6008179438884159160}
   leftDodge: {fileID: 6008179437641841948}
-  flySpeed: 100
+  flySpeed: 200
   turnSpeed: 1
   wayToDodge: {fileID: 0}
   isDodging: 0

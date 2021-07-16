@@ -106,7 +106,7 @@ public class PlayerMove : MonoBehaviour
         transform.Rotate(0f, x * turnSpeed * Time.deltaTime, 0f);   //xoay player sang hướng rẽ trái/phải nếu có
         controller.Move(transform.forward * z * speed * Time.deltaTime);    //di chuyển theo tín hiệu từ bàn phím
 
-        //code lượn lên/xuống khi nhấn các nút Q,E
+        //code lượn lên / xuống khi nhấn các nút Q,E
         //if (Input.GetKey(KeyCode.Q))
         //{
         //    transform.Rotate(-curveSpeed * Time.deltaTime, 0f, 0f);

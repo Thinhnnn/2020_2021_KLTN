@@ -53,7 +53,18 @@ public class GameplayManager : MonoBehaviour
         var x = FindObjectOfType<AudioManager>();
         x.PlaySound("Click");
         //SceneManager.LoadScene("GamePlay 1");
-        Loader.Load(Loader.Scene.Level1_Earth);
+        switch (CacheLevel.currentLevel)
+        {
+            case 0: { Loader.Load(Loader.Scene.Level1_Mercury); break; }
+            case 1: { Loader.Load(Loader.Scene.Level2_Venus); break; }
+            case 2: { Loader.Load(Loader.Scene.Level3_Earth); break; }
+            case 3: { Loader.Load(Loader.Scene.Level4_Mars); break; }
+            case 4: { Loader.Load(Loader.Scene.Level5_Jupiter); break; }
+            case 5: { Loader.Load(Loader.Scene.Level6_Saturn); break; }
+            case 6: { Loader.Load(Loader.Scene.Level7_Uranus); break; }
+            case 7: { Loader.Load(Loader.Scene.Level8_Neptune); break; }
+        }
+        //Loader.Load(Loader.Scene.Level1_Earth);
     }
 
     public void SummonBoss()

@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.061993122, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1842,7 +1842,7 @@ MonoBehaviour:
   rightVector: {fileID: 6008179438069268961}
   rightDodge: {fileID: 6008179438884159160}
   leftDodge: {fileID: 6008179437641841948}
-  flySpeed: 200
+  flySpeed: 400
   turnSpeed: 1
   wayToDodge: {fileID: 0}
   isDodging: 0

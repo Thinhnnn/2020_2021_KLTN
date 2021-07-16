@@ -16,7 +16,14 @@ public static class Loader
     {
         Menu,
         LoadingScene,
-        Level1_Earth
+        Level1_Mercury,
+        Level2_Venus,
+        Level3_Earth,
+        Level4_Mars,
+        Level5_Jupiter,
+        Level6_Saturn,
+        Level7_Uranus,
+        Level8_Neptune
     }
 
     static Action onLoaderCallBack;                 //trigger loader call back

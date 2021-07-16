@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using DG.Tweening;
+using DG.Tweening;
 
 public class PlanerSpin : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class PlanerSpin : MonoBehaviour
 
     IEnumerator spin()
     {
-        //transform.DORotate(new Vector3(0f, spinAngle, 0f), spinTime, RotateMode.LocalAxisAdd);
+        transform.DORotate(new Vector3(0f, spinAngle, 0f), spinTime, RotateMode.LocalAxisAdd);
         yield return new WaitForSeconds(spinTime);
         StartCoroutine(spin());
     }

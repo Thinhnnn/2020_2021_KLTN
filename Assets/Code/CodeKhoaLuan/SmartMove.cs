@@ -50,6 +50,11 @@ public class SmartMove : MonoBehaviour
         //Debug.Log(target.tag);
         aimVector.transform.LookAt(target.transform);
 
+        if (transform.position.y != 0)
+        {
+            transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+        }
+
         if (!isPlayer)
         {
             //tính toán di chuyển
