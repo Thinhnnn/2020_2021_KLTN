@@ -34,6 +34,9 @@ public class MenuUIEvent : MonoBehaviour
     public TextMeshProUGUI[] multipleTextMesh;
     public int jetIndex = 0;
 
+    public Image[] solarSystem;
+    public GameObject[] levelInfo;
+
     #region base method
     // Start is called before the first frame update
     void Start()
@@ -50,6 +53,7 @@ public class MenuUIEvent : MonoBehaviour
         StartCoroutine(textAnim());
         Debug.Log("cache" + CacheLevel.currentLevel);
         Debug.Log("unlock level" + a.unlockLevel());
+        checkLevel();
         if (CacheLevel.currentLevel >= 0)
         {
             firstPanel.SetActive(false);
@@ -277,6 +281,39 @@ public class MenuUIEvent : MonoBehaviour
     #endregion
 
     #region load scene method
+
+    public void checkLevel()
+    {
+        int unlockedLevel = a.unlockLevel(); 
+        for(int i = 0;i<solarSystem.Length;i++)
+        {
+            if (i >= unlockedLevel)
+            {
+                solarSystem[i].raycastTarget = false;
+                solarSystem[i].color = new Color(1, 1, 1, 0.5f);
+            }
+            else
+            {
+                solarSystem[i].raycastTarget = true;
+                solarSystem[i].color = new Color(1, 1, 1, 1);
+            }
+        }
+    }
+
+    public void showLevelInfo(int index)
+    {
+        hideLevelInfo();
+        levelInfo[index].SetActive(true);
+    }
+
+    public void hideLevelInfo()
+    {
+        foreach (GameObject level in levelInfo)
+        {
+            level.SetActive(false);
+        }
+    }
+
     public void switchToLevel(int index)
     {
         if (index < a.unlockLevel())

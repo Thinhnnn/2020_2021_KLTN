@@ -63,6 +63,14 @@ public class SaveAndLoad
         return int.Parse(value[0]);
     }
 
+    public void unlockNewLevel()
+    {
+        string[] value = System.IO.File.ReadAllLines("Data/Jet/Level.txt");
+        int currentValue = int.Parse(value[0]);
+        value[0] = (currentValue + 1).ToString();
+        File.WriteAllLines("Data/Jet/Level.txt", value);
+    }
+
     public void makePayment()
     {
         string[] value = System.IO.File.ReadAllLines("Data/Jet/Gold.txt");

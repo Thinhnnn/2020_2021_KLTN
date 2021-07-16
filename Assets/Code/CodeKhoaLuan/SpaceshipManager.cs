@@ -99,6 +99,10 @@ public class SpaceshipManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         winPanel.SetActive(true);
         SaveAndLoad s = new SaveAndLoad();
+        if(CacheLevel.currentLevel == s.unlockLevel() - 1)
+        {
+            s.unlockNewLevel();
+        }
         s.addGold(1500);
     }
 
