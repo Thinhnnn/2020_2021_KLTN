@@ -45,7 +45,6 @@ public class MenuUIEvent : MonoBehaviour
         myMoney.text = a.MyMoney().ToString();
         multipleValue.text = "Power x " + a.myPower("jet1.txt").ToString();
         HideAllJet();
-        ShowJetWithIndex(a.selectedShip());
         //jetList = GameObject.FindGameObjectsWithTag("SelectJet");
 
         loadJetMultipleValue();
@@ -70,6 +69,8 @@ public class MenuUIEvent : MonoBehaviour
     #region system method
     public void resesetPlayerPos()
     {
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
         StartCoroutine(resetPos());
     }
 
@@ -180,6 +181,8 @@ public class MenuUIEvent : MonoBehaviour
 
     public void BtnPlayMouseClick()
     {
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
         doPause();
         levelSelectPanel.SetActive(true);
         //StartCoroutine(jetFlyOut());
@@ -196,6 +199,8 @@ public class MenuUIEvent : MonoBehaviour
 
     public void BtnCancelLevelClick()
     {
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
         doContinue();
         levelSelectPanel.SetActive(false);
     }
@@ -233,12 +238,12 @@ public class MenuUIEvent : MonoBehaviour
 
     public void upgradeJetMultipleValue(int index)
     {
-        a.upgradeMultipleValue(index);
-        loadJetMultipleValue();
         var x = FindObjectOfType<AudioManager>();
         x.PlaySound("Click2");
         if (a.MyMoney() >= 1000)
         {
+            a.upgradeMultipleValue(index);
+            loadJetMultipleValue();
             a.makePayment();
             myMoney.text = a.MyMoney().ToString();
         }
@@ -249,7 +254,9 @@ public class MenuUIEvent : MonoBehaviour
 
     public void ShowJetWithIndex(int index)
     {
-        HideAllJet();
+        HideAllJet(); 
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
         jetList[index].SetActive(true);
         jetIndex = index;
         a.setSelectedShip(index);
@@ -302,12 +309,16 @@ public class MenuUIEvent : MonoBehaviour
 
     public void showLevelInfo(int index)
     {
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
         hideLevelInfo();
         levelInfo[index].SetActive(true);
     }
 
     public void hideLevelInfo()
     {
+        //var x = FindObjectOfType<AudioManager>();
+        //x.PlaySound("Click2");
         foreach (GameObject level in levelInfo)
         {
             level.SetActive(false);
@@ -316,6 +327,8 @@ public class MenuUIEvent : MonoBehaviour
 
     public void switchToLevel(int index)
     {
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
         if (index < a.unlockLevel())
         {
             CacheLevel.currentLevel = index;
@@ -346,6 +359,7 @@ public class MenuUIEvent : MonoBehaviour
 
     public void hideFirstPanel()
     {
+        ShowJetWithIndex(a.selectedShip());
         firstPanel.SetActive(false);
     } 
 }
