@@ -24,6 +24,8 @@ public class SmartLaser : MonoBehaviour
     public bool isPlayer = false;
     public bool isReloading = false;
     string sound;
+
+    public float multipleValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,15 @@ public class SmartLaser : MonoBehaviour
             StartCoroutine(releaseLaser());
         }
         audioManager = FindObjectOfType<AudioManager>();
+        multipleValue = 1f;
+        StartCoroutine(delayGetMultipleValue());
+    }
+    IEnumerator delayGetMultipleValue()
+    {
+        yield return new WaitForSeconds(1f);
+        SaveAndLoad a = new SaveAndLoad();
+        multipleValue = float.Parse(a.jetMultipleValue(a.selectedShip()));
+        Debug.Log(multipleValue);
     }
 
     // Update is called once per frame
@@ -133,7 +144,7 @@ public class SmartLaser : MonoBehaviour
                 {
                     GameObject beam = Instantiate(laser) as GameObject;
                     beam.GetComponent<LaserSelfDestruct>().getObject(gun[i], nearestRival);
-                    nearestRival.GetComponent<HpManager>().takeLaserDamage(damage);
+                    nearestRival.GetComponent<HpManager>().takeLaserDamage(damage * multipleValue);
                 }
                 yield return new WaitForSeconds(reloadTime);
                 isReloading = false;
@@ -145,7 +156,7 @@ public class SmartLaser : MonoBehaviour
                     audioManager.PlaySound(sound);
                     GameObject beam = Instantiate(laser) as GameObject;
                     beam.GetComponent<LaserSelfDestruct>().getObject(gun[i], nearestRival);
-                    nearestRival.GetComponent<HpManager>().takeLaserDamage(damage);
+                    nearestRival.GetComponent<HpManager>().takeLaserDamage(damage * multipleValue);
                     yield return new WaitForSeconds(fireRate);
                 }
                 yield return new WaitForSeconds(reloadTime - fireRate * amount);

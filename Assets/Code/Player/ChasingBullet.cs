@@ -56,7 +56,7 @@ public class ChasingBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Environment" || (gameObject.tag == "AllyMissle" && other.tag == "Enemy") || (gameObject.tag == "EnemyMissle" && other.tag == "Ally"))
+        if (other.tag == "Environment" || ((gameObject.tag == "AllyMissle" || gameObject.tag == "PlayerMissle") && other.tag == "Enemy") || (gameObject.tag == "EnemyMissle" && other.tag == "Ally"))
         {
             Destroy(gameObject);
             Instantiate(explode, transform.position, transform.rotation);

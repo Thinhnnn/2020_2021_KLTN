@@ -58,7 +58,7 @@ public class SpaceshipManager : MonoBehaviour
             }
             return Allies[nearestIndex];
         }
-        else if (self.tag == "Ally" || self.tag == "AllyMissle")
+        else if (self.tag == "Ally" || self.tag == "AllyMissle" || self.tag == "PlayerMissle")
         {
             for (int i = 1; i < Enemys.Length; i++)
             {
@@ -89,7 +89,7 @@ public class SpaceshipManager : MonoBehaviour
         }
         else
         {
-            winAnimation = false;
+            //winAnimation = false;
         }
         StartCoroutine(UpdateList());
     }

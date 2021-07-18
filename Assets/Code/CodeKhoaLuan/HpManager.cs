@@ -17,6 +17,8 @@ public class HpManager : MonoBehaviour
     public AudioManager audioManager;
 
     public GameObject explotion;
+
+    public float multipleValue;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,16 @@ public class HpManager : MonoBehaviour
         currentHP = maxHP;
         UpdateHP();
         audioManager = FindObjectOfType<AudioManager>();
+        multipleValue = 1f;
+        StartCoroutine(delayGetMultipleValue());
+    }
+
+    IEnumerator delayGetMultipleValue()
+    {
+        yield return new WaitForSeconds(1f);
+        SaveAndLoad a = new SaveAndLoad();
+        multipleValue = float.Parse(a.jetMultipleValue(a.selectedShip()));
+        Debug.Log(multipleValue);
     }
 
     // Update is called once per frame
@@ -54,6 +66,19 @@ public class HpManager : MonoBehaviour
             else if (other.tag == "AllyMeteor")
             {
                 currentHP -= meteorDmg;
+            }
+
+            else if (other.tag == "PlayerBullet")
+            {
+                currentHP -= bulletDmg * multipleValue;
+            }
+            else if (other.tag == "PlayerMissle")
+            {
+                currentHP -= missleDmg * multipleValue;
+            }
+            else if (other.tag == "PlayerMeteor")
+            {
+                currentHP -= meteorDmg * multipleValue;
             }
             UpdateHP();
         }

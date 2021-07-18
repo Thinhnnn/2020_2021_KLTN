@@ -24,6 +24,9 @@ TagManager:
   - EnemyMeteor
   - AllyLaser
   - EnemyLaser
+  - PlayerBullet
+  - PlayerMissle
+  - PlayerMeteor
   layers:
   - Default
   - TransparentFX

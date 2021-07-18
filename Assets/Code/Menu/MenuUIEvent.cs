@@ -13,6 +13,7 @@ public class MenuUIEvent : MonoBehaviour
     public GameObject settingPanel;
     public GameObject jetProfilePanel;
     public GameObject levelSelectPanel;
+    public GameObject storyPanel;
     public GameObject firstPanel;
     public Text myMoney;
     public TextMeshProUGUI waitForClick;
@@ -49,6 +50,7 @@ public class MenuUIEvent : MonoBehaviour
 
         loadJetMultipleValue();
         loadJetUnlockStatus();
+        ShowJetWithIndex(a.selectedShip());
         StartCoroutine(textAnim());
         Debug.Log("cache" + CacheLevel.currentLevel);
         Debug.Log("unlock level" + a.unlockLevel());
@@ -96,6 +98,23 @@ public class MenuUIEvent : MonoBehaviour
     #endregion
 
     #region Button event
+
+    public void showStory()
+    {
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
+        storyPanel.SetActive(true);
+        doPause();
+    }
+
+    public void closeStory()
+    {
+        var x = FindObjectOfType<AudioManager>();
+        x.PlaySound("Click2");
+        storyPanel.SetActive(false);
+        doContinue();
+    }
+
     public void BtnExitClick()
     {
         if(exitPanel.active == true)
