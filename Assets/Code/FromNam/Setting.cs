@@ -24,7 +24,7 @@ public class Setting : MonoBehaviour
     public void SaveSetting()
     {
         var x = FindObjectOfType<AudioManager>();
-        x.PlaySound("Click");
+        x.PlaySound("Click2");
         SaveSystem.SaveSetting(this);
     }
 

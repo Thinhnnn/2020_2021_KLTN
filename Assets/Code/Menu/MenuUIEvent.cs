@@ -50,7 +50,10 @@ public class MenuUIEvent : MonoBehaviour
 
         loadJetMultipleValue();
         loadJetUnlockStatus();
-        ShowJetWithIndex(a.selectedShip());
+        if (CacheLevel.currentLevel >= 0)
+        {
+            ShowJetWithIndex(a.selectedShip());
+        }
         StartCoroutine(textAnim());
         Debug.Log("cache" + CacheLevel.currentLevel);
         Debug.Log("unlock level" + a.unlockLevel());
@@ -275,7 +278,7 @@ public class MenuUIEvent : MonoBehaviour
     {
         HideAllJet(); 
         var x = FindObjectOfType<AudioManager>();
-        x.PlaySound("Click2");
+        x.PlaySound("DoorClose");
         jetList[index].SetActive(true);
         jetIndex = index;
         a.setSelectedShip(index);
