@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0091381585, g: 0.06156119, b: 0.15858772, a: 1}
+  m_IndirectSpecularColor: {r: 0.009074194, g: 0.06153085, b: 0.15855473, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6706,6 +6706,7 @@ MonoBehaviour:
   txtShipName: {fileID: 189596712}
   txtHP: {fileID: 1133797636}
   player: {fileID: 1205096423}
+  fill: {fileID: 1438370624}
 --- !u!1 &1247356359
 GameObject:
   m_ObjectHideFlags: 0

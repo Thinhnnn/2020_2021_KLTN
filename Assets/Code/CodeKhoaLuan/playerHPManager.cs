@@ -17,6 +17,9 @@ public class playerHPManager : MonoBehaviour
     public GameObject player;
     GameObject ship;
     bool loseAnimation = false;
+    float oldHP;
+    Coroutine hit;
+    public Image fill;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +31,13 @@ public class playerHPManager : MonoBehaviour
     {
         if (ship != null)
         {
+
             curentHP = ship.GetComponent<HpManager>().currentHP;
+            if (curentHP != oldHP)
+            {
+                hit = StartCoroutine(getDmg());
+                oldHP = curentHP;
+            }
             if (curentHP <= 0 && loseAnimation == false)
             {
                 loseAnimation = true;
@@ -41,6 +50,13 @@ public class playerHPManager : MonoBehaviour
             HPBar.value = curentHP / maxHP;
             txtHP.text = curentHP.ToString() + "/" + maxHP.ToString();
         }
+    }
+
+    IEnumerator getDmg()
+    {
+        fill.color = new Color(1f, 0, 0, 0.5882353f);
+        yield return new WaitForSeconds(0.5f);
+        fill.color = new Color(0, 0.682353f, 1f, 0.5882353f);
     }
 
     IEnumerator loseAnim()
@@ -58,6 +74,7 @@ public class playerHPManager : MonoBehaviour
         {
             maxHP = ship.GetComponent<HpManager>().maxHP;
             curentHP = maxHP;
+            oldHP = curentHP;
             txtShipName.text = ship.name;
             txtHP.text = curentHP.ToString() + "/" + maxHP.ToString();
         }
